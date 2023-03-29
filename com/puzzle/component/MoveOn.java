@@ -1,6 +1,6 @@
 package com.puzzle.component;
 
-import  javax.swing.JButton;
+import javax.swing.JButton;
 
 import com.puzzle.Core;
 /**
@@ -47,6 +47,7 @@ public class MoveOn {
                 return;
             }
         }
+
         Core.end();
     }
 }

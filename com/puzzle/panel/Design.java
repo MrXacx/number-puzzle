@@ -43,9 +43,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt){
               MoveOn move = new MoveOn(button[0]);
               move.fetchEmptyButton(button[1], button[4]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 
@@ -53,9 +50,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[1]);
               move.fetchEmptyButton(button[0], button[2], button[5]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
             
         });
@@ -64,9 +58,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[2]);
               move.fetchEmptyButton(button[1], button[3], button[6]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
         
@@ -74,9 +65,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[3]);
               move.fetchEmptyButton(button[2], button[7]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 
@@ -84,9 +72,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[4]);
               move.fetchEmptyButton(button[0], button[5], button[8]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 		
@@ -94,9 +79,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[5]);
               move.fetchEmptyButton(button[4], button[1], button[6], button[9]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 		
@@ -104,9 +86,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[6]);
               move.fetchEmptyButton(button[5], button[7], button[2], button[10]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
         
@@ -114,9 +93,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[7]);
               move.fetchEmptyButton(button[6], button[3], button[11]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 
@@ -124,9 +100,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[8]);
               move.fetchEmptyButton(button[9], button[4], button[12]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 		
@@ -134,9 +107,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[9]);
               move.fetchEmptyButton(button[8], button[5], button[10], button[13]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 
@@ -144,9 +114,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[10]);
               move.fetchEmptyButton(button[9],button[11],button[6], button[14]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
         
@@ -154,9 +121,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[11]);
               move.fetchEmptyButton(button[10],button[7], emptyButton);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 
@@ -174,9 +138,6 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[13]);
               move.fetchEmptyButton(button[12],button[14],button[9]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
 		
@@ -184,9 +145,6 @@ public class Design extends JPanel {
            public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[14]);
               move.fetchEmptyButton(button[13],emptyButton, button[10]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
             }
         });
         
@@ -198,7 +156,7 @@ public class Design extends JPanel {
               MoveOn move = new MoveOn(emptyButton);
               move.fetchEmptyButton(button[14],button[11]);
               if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
+                MoveOn.fetchWin(button);
               }
             }
         });

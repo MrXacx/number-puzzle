@@ -60,10 +60,13 @@ public class Core {
         *	@since 3.0
         */
         frame.setVisible(false);
-        if(JOptionPane.showConfirmDialog(null, "Você venceu!! Deseja jogar novamente?", "Fim de jogo", JOptionPane.YES_NO_OPTION) == 0)
+        if(JOptionPane.showConfirmDialog(null, "Você venceu!! Deseja jogar novamente?", "Fim de jogo", JOptionPane.YES_NO_OPTION) == 0){
             start();
-        else
-            JOptionPane.showMesssageDialog(null, "Volte sempre!", "Fim de jogo", 1);
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Volte sempre!", "Fim de jogo", 1);
+        System.exit(0);
+        
     }
 
 }
