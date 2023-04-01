@@ -1,11 +1,17 @@
 package com.puzzle.panel;
 
+import java.util.ArrayList;
+
+// GUI'S CLASSES
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
+import javax.swing.BorderFactory;
+
+// EVENT'S CLASSES
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
+
 
 import com.puzzle.component.MoveOn;
 
@@ -14,7 +20,7 @@ import com.puzzle.component.MoveOn;
 *	@author Ariel Santos
 *	@author Italo Cerqueira
 *	@author Pedro Santana
-*	@version 2.0
+*	@version 3.0
 *	@since 1.0
 */
 
@@ -24,17 +30,17 @@ public class Design extends JPanel {
 	private JButton emptyButton;
     // End of variables declaration//GEN-END:variables
     
-    public Design(int length, String[] order) {
-        initComponents(length, order);
+    public Design(Object[] order) {
+        initComponents(order);
     }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents(int length, String[] order) {
-    	button = new JButton[length];
-    	for(int index = 0; index < length ; index++){
+    private void initComponents(Object[] order) {
+    	button = new JButton[15];
+    	for(int index = 0; index < 15; index++){
     		button[index] = new JButton();
-            button[index].setText(order[index]);
+            button[index].setText(order[index].toString());
     		button[index].setName("B"+(index+1));
     	}
         setBorder(BorderFactory.createEtchedBorder());
@@ -150,7 +156,7 @@ public class Design extends JPanel {
         
         emptyButton = new JButton();
         emptyButton.setName("emptyButton");
-        emptyButton.setText("");
+        emptyButton.setText(" ");
        	emptyButton.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(emptyButton);

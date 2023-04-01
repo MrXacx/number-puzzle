@@ -2,8 +2,9 @@ package com.puzzle;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.util.Random;
-import java.util.Arrays;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import com.puzzle.panel.Design;
 
@@ -19,15 +20,21 @@ import com.puzzle.panel.Design;
 
 public class Core {
     private static JFrame frame;
+    private static ArrayList<String> list;
     public static void main(String[] args){
+
+        list = iterator(new ArrayList<String>());
         start();	
     }
-    
     public static void start(){
+		/**
+        *	@since 2.0
+        */
+        Collections.shuffle(list);
 
         try{
             frame = new JFrame("Puzzle");
-            frame.add(new Design(15, Core.shuffle(15)));
+            frame.add(new Design(list.toArray()));
         } catch(Exception e){
             System.out.println("\n\n\n"+e+"\n\n\n");
             return;
@@ -38,29 +45,22 @@ public class Core {
         frame.setVisible(true);
     }
     
-    public static String[] shuffle(Integer length) {
-        /**
+    public static ArrayList<String> iterator(ArrayList<String> list){
+    	/**
         *	@since 2.0
-        *	@param length --> quantidade de números sorteados
-        *	@return lista de inteiros em ordem aleatória
         */
-        String[] list = new String[length];
-        Random r = new Random();
-        String number;
-        for (int index = 0; index < length; index++) {
-                do{
-                        number = Integer.toString(r.nextInt(length)+1);      	
-                } while (Arrays.asList(list).contains(number));
-                list[index] = number;
+        for(int index = 1 ; index < 16; index++){
+            list.add(Integer.toString(index));
         }
         return list;
     }
+
     public static void end(){
         /**
-        *	@since 3.0
+        *	@since 2.0
         */
         frame.setVisible(false);
-        if(JOptionPane.showConfirmDialog(null, "Você venceu!! Deseja jogar novamente?", "Fim de jogo", JOptionPane.YES_NO_OPTION) == 0){
+        if(JOptionPane.showConfirmDialog(null, "Você venceu!! Deseja jogar novamente?", "Fim de jogo", JOptionPane.YES_NO_OPTION ) == 0){
             start();
             return;
         }
