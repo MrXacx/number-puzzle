@@ -14,7 +14,7 @@ import com.puzzle.Core;
 
 public class MoveOn {
     private final JButton pressedButton;
-    
+    private static int clicks = 0;
     public MoveOn(JButton pressedButton){
         this.pressedButton = pressedButton;
     }
@@ -40,14 +40,17 @@ public class MoveOn {
     private void moveTo(JButton to){
         to.setText(pressedButton.getText());
         this.pressedButton.setText("");
+        clicks++;
     }
-    public static void fetchWin(JButton[] buttons){
+    public static void fetchWin(JButton[] buttons, JButton exclude){
         for(JButton button : buttons){
-            if(!button.getName().equals("B" + button.getText())){
-                return;
-            }
+            if(button.equals(exclude)) continue;
+            else if(!button.getName().equals("B" + button.getText())) return;
         }
 
         Core.end();
+    }
+    public static int getClicks(){
+        return clicks;
     }
 }
