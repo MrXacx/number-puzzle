@@ -5,8 +5,9 @@ import javax.swing.JOptionPane;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+        
 import com.puzzle.panel.Design;
+import com.puzzle.component.Time;
 
 
 /**
@@ -21,17 +22,20 @@ import com.puzzle.panel.Design;
 public class Core {
     private static JFrame frame;
     private static ArrayList<String> list;
+    private static int[] initalTime;
+    
     public static void main(String[] args){
-
         list = iterator(new ArrayList<String>());
         start();	
     }
     public static void start(){
-		/**
-        *	@since 2.0
+        /**
+        *   @since 2.0
         */
+        
+        initalTime = Time.setTime();
         Collections.shuffle(list);
-
+        
         try{
             frame = new JFrame("Puzzle");
             frame.add(new Design(list.toArray()));
@@ -40,7 +44,7 @@ public class Core {
             return;
         }
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(403,433);
+        frame.setSize(403,473);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
@@ -49,7 +53,7 @@ public class Core {
     	/**
         *	@since 2.0
         */
-        for(int index = 1 ; index < 16; index++){
+        for(int index = 0 ; index < 16; index++){
             list.add(Integer.toString(index));
         }
         return list;
