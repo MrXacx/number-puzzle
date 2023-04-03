@@ -5,6 +5,7 @@ import java.util.ArrayList;
 // GUI'S CLASSES
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.BorderFactory;
 
@@ -14,7 +15,7 @@ import java.awt.event.ActionListener;
 
 
 import com.puzzle.component.MoveOn;
-
+import com.puzzle.Core;
 
 /**
 *	@author Ariel Santos
@@ -27,7 +28,7 @@ import com.puzzle.component.MoveOn;
 public class Design extends JPanel {
 	// Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton[] button;
-	private JButton emptyButton;
+    private JLabel countClicks = new JLabel();
     // End of variables declaration//GEN-END:variables
     
     public Design(Object[] order) {
@@ -37,11 +38,11 @@ public class Design extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents(Object[] order) {
-    	button = new JButton[15];
-    	for(int index = 0; index < 15; index++){
-    		button[index] = new JButton();
-            button[index].setText(order[index].toString());
-    		button[index].setName("B"+(index+1));
+    	button = new JButton[16];
+    	for(int index = 0; index < 16; index++){
+            button[index] = new JButton();
+            button[index].setText(order[index].toString().equals("0") ? " " : order[index].toString());
+            button[index].setName("B"+(index+1));
     	}
         setBorder(BorderFactory.createEtchedBorder());
 
@@ -49,6 +50,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt){
               MoveOn move = new MoveOn(button[0]);
               move.fetchEmptyButton(button[1], button[4]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 
@@ -56,6 +58,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[1]);
               move.fetchEmptyButton(button[0], button[2], button[5]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
             
         });
@@ -64,6 +67,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[2]);
               move.fetchEmptyButton(button[1], button[3], button[6]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
         
@@ -71,6 +75,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[3]);
               move.fetchEmptyButton(button[2], button[7]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 
@@ -78,6 +83,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[4]);
               move.fetchEmptyButton(button[0], button[5], button[8]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 		
@@ -85,6 +91,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[5]);
               move.fetchEmptyButton(button[4], button[1], button[6], button[9]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 		
@@ -92,6 +99,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[6]);
               move.fetchEmptyButton(button[5], button[7], button[2], button[10]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
         
@@ -99,6 +107,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[7]);
               move.fetchEmptyButton(button[6], button[3], button[11]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 
@@ -106,6 +115,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[8]);
               move.fetchEmptyButton(button[9], button[4], button[12]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 		
@@ -113,6 +123,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[9]);
               move.fetchEmptyButton(button[8], button[5], button[10], button[13]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 
@@ -120,13 +131,15 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[10]);
               move.fetchEmptyButton(button[9],button[11],button[6], button[14]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
         
         button[11].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[11]);
-              move.fetchEmptyButton(button[10],button[7], emptyButton);
+              move.fetchEmptyButton(button[10],button[7], button[15]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 
@@ -134,9 +147,7 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[12]);
               move.fetchEmptyButton(button[13],button[8]);
-              if(emptyButton.getText().isBlank()){
-                  MoveOn.fetchWin(button);
-              }
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 
@@ -144,31 +155,36 @@ public class Design extends JPanel {
             public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[13]);
               move.fetchEmptyButton(button[12],button[14],button[9]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
 		
         button[14].addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent evt) {
               MoveOn move = new MoveOn(button[14]);
-              move.fetchEmptyButton(button[13],emptyButton, button[10]);
+              move.fetchEmptyButton(button[13],button[15], button[10]);
+              countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
             }
         });
         
-        emptyButton = new JButton();
-        emptyButton.setName("emptyButton");
-        emptyButton.setText(" ");
-       	emptyButton.addActionListener(new ActionListener() {
+       	button[15].addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent evt) {
-              MoveOn move = new MoveOn(emptyButton);
+              MoveOn move = new MoveOn(button[15]);
               move.fetchEmptyButton(button[14],button[11]);
-              if(emptyButton.getText().isBlank()){
-                MoveOn.fetchWin(button);
+              Core.countTime(Core.setTime());
+              if(button[15].getText().isBlank()){
+                MoveOn.fetchWin(button, button[15]);
+                countClicks.setText("Cliques: " +Integer.toString(MoveOn.getClicks()));
               }
             }
         });
+        countClicks.setText("Cliques: 0");
+        countClicks.setName("clicks");
+        add(countClicks);
 
-		GroupLayout layout = new GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
+        //setLayout(new javax.swing.BoxLayout(this, java.awt.BorderLayout.PAGE_END));
         layout.setHorizontalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -192,9 +208,11 @@ public class Design extends JPanel {
                         .addComponent(button[12], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)  
                         .addComponent(button[13], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)                    
                         .addComponent(button[14], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)            
-                        .addComponent(emptyButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-            )
-        );
+                        .addComponent(button[15], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(countClicks, GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )
+            ));
+
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -215,11 +233,12 @@ public class Design extends JPanel {
                     .addComponent(button[10], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(button[12], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emptyButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button[15], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                     .addComponent(button[13], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                     .addComponent(button[14], GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(countClicks))
             )
         );
     }// </editor-fold>//GEN-END:initComponents
 }
-
