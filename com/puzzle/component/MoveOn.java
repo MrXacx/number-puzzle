@@ -5,8 +5,6 @@ import javax.swing.JButton;
 import com.puzzle.Core;
 /**
 *	@author Ariel Santos
-*	@author Italo Cerqueira
-*	@author Pedro Santana
 *	@version 1.1
 *	@since 1.0
 *	@see Design

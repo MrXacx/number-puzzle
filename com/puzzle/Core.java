@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
         
 import com.puzzle.panel.Design;
-import com.puzzle.component.Time;
+//import com.puzzle.component.Time;
 
 
 /**
@@ -26,51 +26,56 @@ public class Core {
     
     public static void main(String[] args){
         list = iterator(new ArrayList<String>());
-        start();	
+        new Core();	
     }
-    public static void start(){
+    public Core(){
         /**
         *   @since 2.0
         */
         
-        initalTime = Time.setTime();
-        Collections.shuffle(list);
+        //initalTime = Time.setTime();
+        Collections.shuffle(list); // Embaralha lista
         
         try{
-            frame = new JFrame("Puzzle");
-            frame.add(new Design(list.toArray()));
+            frame = new JFrame("Puzzle"); // Inicia frame com título Puzzle
+            frame.add(new Design(list.toArray())); // Adiciona painel com botôes e labels ao frame
         } catch(Exception e){
-            System.out.println("\n\n\n"+e+"\n\n\n");
+            System.out.println("\n\n\n"+e+"\n\n\n"); // Exibe qualquer exceção lançadas no instaciamento
             return;
         }
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(403,473);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        frame.setSize(403,473); // Define dimensões do frame (width, height)
+        frame.setLocationRelativeTo(null); // Centraliza frame na tela
+        frame.setVisible(true); // Torna frame visível
     }
     
-    public static ArrayList<String> iterator(ArrayList<String> list){
+    public static ArrayList<String> iterator(ArrayList<String> iterable){
     	/**
         *	@since 2.0
+        *   @param ArrayList<String> vazio
+        *   @return ArrayList<String> com 16 posições preenchidas com inteiros de 0 a 15 não repetidos
         */
+
         for(int index = 0 ; index < 16; index++){
-            list.add(Integer.toString(index));
+            iterable.add(Integer.toString(index)); // Adiciona String ao fim da lista
         }
-        return list;
+
+        return iterable;
     }
 
     public static void end(){
         /**
         *	@since 2.0
         */
-        frame.setVisible(false);
+        frame.setVisible(false); // desabilita frame
+
+        // Informa vitória e inquere recomeço do jogo
         if(JOptionPane.showConfirmDialog(null, "Você venceu!! Deseja jogar novamente?", "Fim de jogo", JOptionPane.YES_NO_OPTION ) == 0){
-            start();
+            new Core(); // reinicia jogo
             return;
         }
-        JOptionPane.showMessageDialog(null, "Volte sempre!", "Fim de jogo", 1);
-        System.exit(0);
-        
+        JOptionPane.showMessageDialog(null, "Volte sempre!", "Fim de jogo", 1); // informa fim de execução
+        System.exit(0); // finaliza execução de código com código 0
     }
 
 }
